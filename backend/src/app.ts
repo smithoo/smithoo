@@ -7,13 +7,11 @@ import logger from 'jet-logger';
 import StatusCodes from 'http-status-codes';
 import router from './routes';
 import cors from 'cors';
+import { graphqlHTTP } from 'express-graphql';
+import schema from './graphql/schema';
+import postsGraphql from './graphql/posts-graphql';
 
 const app = express();
-
-// view engine setup
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'jade');
-// app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -32,10 +30,14 @@ if (process.env.NODE_ENV === 'production') {
 
 app.use('/', router);
 
-// catch 404 and forward to error handler
-// app.use((req, res, next) => {
-//     next(createError(StatusCodes.BAD_REQUEST));
-// });
+app.use(
+    '/posts',
+    graphqlHTTP({
+        schema: schema,
+        rootValue: postsGraphql,
+        graphiql: true,
+    }),
+);
 
 app.use((err: Error, req, res, next) => {
     logger.err(err, true);
