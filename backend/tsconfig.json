@@ -5,15 +5,17 @@
         "strict": true,
         "moduleResolution": "node",
         "useDefineForClassFields": true,
+        "allowSyntheticDefaultImports": true,
         "sourceMap": true,
         "resolveJsonModule": true,
         "esModuleInterop": true,
         "lib": ["esnext", "dom"],
         "composite": true,
         "outDir": "dist",
-        "baseUrl": "./",
+        "baseUrl": ".",
         "skipLibCheck": true,
-        "noImplicitAny": false
+        "noImplicitAny": false,
+        "declaration": true
     },
     "include": ["src/**/*.ts", "src/**/*.d.ts"],
     "exclude": ["node_modules"]
