@@ -5,11 +5,18 @@ const schema = buildSchema(`
         users: [User]
         user(email: String!): User
         posts: [Post]
+        books: [Book]
+        book(id: String!): Book
     }
 
     type Mutation {
         createUser(email: String!, pwd: String!): User
         createPost(title: String!, contents: String!, author: String!): Post
+    }
+
+    type Book {
+        id: String
+        title: String
     }
 
     type User{
@@ -21,8 +28,8 @@ const schema = buildSchema(`
 
     type Post{
         id: String
-        title: String,
-        contents: String,
+        title: String
+        contents: String
         author: User
         c_date: String
     }

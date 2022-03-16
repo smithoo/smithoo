@@ -1,4 +1,3 @@
-import createError from 'http-errors';
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
@@ -9,7 +8,7 @@ import router from './routes';
 import cors from 'cors';
 import { graphqlHTTP } from 'express-graphql';
 import schema from './graphql/schema';
-import postsGraphql from './graphql/posts-graphql';
+import resolvers from './graphql/resolvers';
 
 const app = express();
 
@@ -31,10 +30,10 @@ if (process.env.NODE_ENV === 'production') {
 app.use('/', router);
 
 app.use(
-    '/posts',
+    '/graphql',
     graphqlHTTP({
         schema: schema,
-        rootValue: postsGraphql,
+        rootValue: resolvers,
         graphiql: true,
     }),
 );
