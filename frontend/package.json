@@ -1,25 +1,38 @@
 {
-  "name": "smithoo",
-  "private": true,
-  "version": "0.0.0",
-  "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "@urql/vue": "^0.6.1",
-    "axios": "^0.26.1",
-    "element-plus": "^2.1.1",
-    "graphql": "^16.3.0",
-    "pinia": "^2.0.11",
-    "vue": "^3.2.25",
-    "vue-router": "^4.0.14"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-vue": "^2.2.0",
-    "typescript": "^4.5.4",
-    "vite": "^2.8.0",
-    "vue-tsc": "^0.29.8"
-  }
+    "name": "smithoo",
+    "private": true,
+    "version": "0.0.0",
+    "scripts": {
+        "dev": "vite",
+        "build": "vue-tsc --noEmit && vite build",
+        "preview": "vite preview",
+        "lint": "eslint --ext .js,.ts,.vue src",
+        "lint:fix": "eslint --fix --ext .js,.ts,.vue src"
+    },
+    "browserslist": [
+        "> 1%",
+        "not ie 11",
+        "not op_mini all"
+    ],
+    "dependencies": {
+        "@urql/vue": "^0.6.1",
+        "axios": "^0.26.1",
+        "element-plus": "^2.1.1",
+        "graphql": "^16.3.0",
+        "pinia": "^2.0.11",
+        "vue": "^3.2.31",
+        "vue-router": "^4.0.14"
+    },
+    "devDependencies": {
+        "@types/node": "^17.0.21",
+        "@typescript-eslint/eslint-plugin": "^5.15.0",
+        "@typescript-eslint/parser": "^5.15.0",
+        "@vitejs/plugin-vue": "^2.2.4",
+        "eslint": "^8.11.0",
+        "eslint-plugin-vue": "^8.5.0",
+        "sass": "^1.49.9",
+        "typescript": "^4.6.2",
+        "vite": "^2.8.6",
+        "vue-tsc": "^0.29.8"
+    }
 }
