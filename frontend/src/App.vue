@@ -1,6 +1,7 @@
 <template>
     <div>
         <el-row class="mb-4">
+            {{ data }}
             <el-button @click="call">Default</el-button>
             <el-button type="primary">Primary</el-button>
             <el-button type="success">Success</el-button>
@@ -13,7 +14,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import axios from 'axios';
 export default defineComponent({
     data() {
         return {
@@ -22,7 +22,7 @@ export default defineComponent({
     },
     methods: {
         async call() {
-            this.data = await axios.get('http://localhost:2999/test');
+            this.data = await this.$axios.get('http://localhost:2999/test');
         },
     },
 });

@@ -1,20 +1,27 @@
 import { createApp } from 'vue';
+import axios from 'axios';
+import urql, { createClient } from '@urql/vue';
 import ElementPlus from 'element-plus';
 import 'element-plus/dist/index.css';
-import urql, { createClient } from '@urql/vue';
 import App from './App.vue';
 
 const app = createApp(App);
 
-const client = createClient({
-    url: 'http://localhost:3000/graphql',
+// axios
+const axiosInstance = axios.create({
+    baseURL: 'http://localhost:2999',
+    timeout: 5000,
+    // headers: {'X-Custom-Header': 'foobar'}
 });
+app.config.globalProperties.$axios = axiosInstance;
 
-app.use(ElementPlus);
-app.use(urql, {
-    url: 'http://localhost:2999/graphql',
-});
-
+// graphql
+const graphqlUrl = 'http://localhost:2999/graphql';
+const client = createClient({ url: graphqlUrl });
+app.use(urql, { url: graphqlUrl }); // provideClient로 변경 가능성 있음
 app.config.globalProperties.$graphql = client;
+
+// element ui
+app.use(ElementPlus);
 
 app.mount('#app');
