@@ -22,7 +22,7 @@ export default defineComponent({
     },
     methods: {
         async call() {
-            this.data = await this.$axios.get('http://localhost:2999/test');
+            this.data = await this.$axios.get('/test');
         },
     },
 });
