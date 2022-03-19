@@ -1,6 +1,6 @@
 import { createApp } from 'vue';
 import axios from 'axios';
-import urql, { createClient } from '@urql/vue';
+import { createClient } from '@urql/vue';
 import ElementPlus from 'element-plus';
 import 'element-plus/dist/index.css';
 import App from './App.vue';
@@ -19,8 +19,7 @@ app.config.globalProperties.$axios = axiosInstance;
 // graphql
 const graphqlUrl = `${serverBaseUrl}/graphql`;
 const client = createClient({ url: graphqlUrl });
-app.use(urql, { url: graphqlUrl }); // provideClient로 변경 가능성 있음
-app.config.globalProperties.$graphql = client;
+app.config.globalProperties.$graphql = client; // provide client in App.vue
 
 // element ui
 app.use(ElementPlus);
