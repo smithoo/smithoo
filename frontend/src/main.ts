@@ -4,6 +4,7 @@ import { createClient } from '@urql/vue';
 import ElementPlus from 'element-plus';
 import 'element-plus/dist/index.css';
 import App from './App.vue';
+import { firebaseApp } from './firebase';
 
 const app = createApp(App);
 const serverBaseUrl = 'http://localhost:2999';
@@ -23,5 +24,7 @@ app.config.globalProperties.$graphql = client; // provide client in App.vue
 
 // element ui
 app.use(ElementPlus);
+
+console.log(firebaseApp);
 
 app.mount('#app');
