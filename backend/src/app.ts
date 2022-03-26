@@ -38,6 +38,7 @@ app.use(
     }),
 );
 
+// eslint-disable-next-line
 app.use((err: Error, req, res, next) => {
     logger.err(err, true);
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
