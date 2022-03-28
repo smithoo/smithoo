@@ -1,8 +1,13 @@
 <template>
     <div>
-        <button type="button" @click="signIn">Google Sign-in</button>
-        <button type="button" @click="getResult">Get result</button>
-        <button type="button" @click="signOut">Primary</button>
+        <q-btn color="white" text-color="black" label="Standard" @click="signIn" />
+        <q-btn color="primary" label="Primary" @click="getResult" />
+        <q-btn color="secondary" label="Secondary" @click="signOut" />
+        <q-btn color="amber" glossy label="Amber" />
+        <q-btn color="brown-5" label="Brown 5" />
+        <q-btn color="deep-orange" glossy label="Deep Orange" />
+        <q-btn color="purple" label="Purple" />
+        <q-btn color="black" label="Black" />
     </div>
 </template>
 
