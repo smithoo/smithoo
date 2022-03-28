@@ -1,8 +1,6 @@
 import { createApp } from 'vue';
 import axios from 'axios';
 import { createClient } from '@urql/vue';
-import ElementPlus from 'element-plus';
-import 'element-plus/dist/index.css';
 import App from './App.vue';
 import { firebaseApp } from './firebase';
 
@@ -21,9 +19,6 @@ app.config.globalProperties.$axios = axiosInstance;
 const graphqlUrl = `${serverBaseUrl}/graphql`;
 const client = createClient({ url: graphqlUrl });
 app.config.globalProperties.$graphql = client; // provide client in App.vue
-
-// element ui
-app.use(ElementPlus);
 
 console.log(firebaseApp);
 

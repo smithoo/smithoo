@@ -1,9 +1,9 @@
 <template>
-    <el-row class="mb-4">
-        <el-button @click="signIn">Google Sign-in</el-button>
-        <el-button @click="getResult">Get result</el-button>
-        <el-button @click="signOut" type="primary">Primary</el-button>
-    </el-row>
+    <div>
+        <button type="button" @click="signIn">Google Sign-in</button>
+        <button type="button" @click="getResult">Get result</button>
+        <button type="button" @click="signOut">Primary</button>
+    </div>
 </template>
 
 <script lang="ts">
