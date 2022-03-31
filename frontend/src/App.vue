@@ -1,8 +1,8 @@
 <template>
     <div>
-        <q-btn color="white" text-color="black" label="Standard" @click="signIn" />
-        <q-btn color="primary" label="Primary" @click="getResult" />
-        <q-btn color="secondary" label="Secondary" @click="signOut" />
+        <q-btn color="white" text-color="black" label="Standard" />
+        <q-btn color="primary" label="Primary" />
+        <q-btn color="secondary" label="Secondary" />
         <q-btn color="amber" glossy label="Amber" />
         <q-btn color="brown-5" label="Brown 5" />
         <q-btn color="deep-orange" glossy label="Deep Orange" />
@@ -14,31 +14,15 @@
 <script lang="ts">
 import { defineComponent, getCurrentInstance } from 'vue';
 import { provideClient } from '@urql/vue';
-import { signInGoogle, signOutGoogle, getGoogleAuthResult } from './firebase/auth';
 
 export default defineComponent({
     setup() {
         const app = getCurrentInstance();
-        const client = app?.appContext.config.globalProperties.$graphql;
-        provideClient(client);
+        const globalProperties = app?.appContext.config.globalProperties;
+        const graphql = globalProperties?.$graphql;
+        provideClient(graphql);
 
-        function signIn() {
-            signInGoogle();
-        }
-
-        function getResult() {
-            getGoogleAuthResult();
-        }
-
-        function signOut() {
-            signOutGoogle();
-        }
-
-        return {
-            signIn,
-            getResult,
-            signOut,
-        };
+        return {};
     },
 });
 </script>
