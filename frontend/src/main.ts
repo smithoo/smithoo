@@ -11,6 +11,9 @@ import '@quasar/extras/material-icons-outlined/material-icons-outlined.css';
 // Import Quasar css
 import 'quasar/src/css/index.sass';
 
+import VueRouter from 'vue-router';
+import routes from './router/routes';
+
 const app = createApp(App);
 
 app.use(Quasar, {
@@ -29,6 +32,13 @@ app.use(Quasar, {
     }
     */
 });
+console.log(VueRouter);
+const router = VueRouter.createRouter({
+    history: VueRouter.createWebHashHistory(),
+    routes,
+});
+
+app.use(router);
 
 const serverBaseUrl = 'http://localhost:2999';
 
