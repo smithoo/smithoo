@@ -3,13 +3,21 @@
         <HeaderBar @open="toggleDrawer" />
 
         <NavMenu v-model="drawerOpen" />
-
-        <q-page-container>
-            <router-view />
-
-            <q-page-scroller position="bottom-right" :scroll-offset="200" :offset="[12, 12]">
-                <q-btn fab-mini icon="o_keyboard_arrow_up" color="secondary" />
-            </q-page-scroller>
+        <q-page-container class="container">
+            <div class="contents">
+                <q-scroll-area :visible="false" class="fit">
+                    <q-layout>
+                        <router-view />
+                        <q-page-scroller
+                            position="bottom-right"
+                            :scroll-offset="10"
+                            :offset="[12, 12]"
+                        >
+                            <q-btn fab-mini icon="o_keyboard_arrow_up" color="primary" />
+                        </q-page-scroller>
+                    </q-layout>
+                </q-scroll-area>
+            </div>
         </q-page-container>
     </q-layout>
 </template>
@@ -41,3 +49,15 @@ export default defineComponent({
     },
 });
 </script>
+
+<style lang="scss" scoped>
+.container {
+    position: relative;
+    height: 100vh;
+    .contents {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+}
+</style>
