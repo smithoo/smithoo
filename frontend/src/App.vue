@@ -10,7 +10,7 @@
                         <router-view />
                         <q-page-scroller
                             position="bottom-right"
-                            :scroll-offset="10"
+                            :scroll-offset="200"
                             :offset="[12, 12]"
                         >
                             <q-btn fab-mini icon="o_keyboard_arrow_up" color="primary" />
