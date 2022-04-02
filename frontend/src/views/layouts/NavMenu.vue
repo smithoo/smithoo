@@ -15,7 +15,7 @@
                             <q-item
                                 v-for="child in m.children"
                                 :key="child.id"
-                                active
+                                :active="isActive(child.url)"
                                 clickable
                                 v-ripple
                                 dense
@@ -28,7 +28,7 @@
                     </q-expansion-item>
                     <q-item
                         v-else
-                        active
+                        :active="isActive(m.url)"
                         clickable
                         v-ripple
                         dense
@@ -47,6 +47,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, toRefs, watch } from 'vue';
+import { useRoute } from 'vue-router';
 
 interface MenuItem {
     id: string;
@@ -66,16 +67,18 @@ export default defineComponent({
     setup(props, { emit }) {
         const { modelValue } = toRefs(props);
 
+        const route = useRoute();
+
         const drawerOpen = ref(false);
 
         const menu: MenuItem[] = [
             { id: 'home', icon: 'o_home', label: 'Home', url: '/' },
-            { id: 'todo', icon: 'o_checklist', label: 'Todo', url: '/' },
+            { id: 'todo', icon: 'o_checklist', label: 'Todo', url: '/todo' },
             {
                 id: 'article',
                 icon: 'o_feed',
                 label: 'Article',
-                url: '/',
+                url: '/article',
                 children: [
                     {
                         id: 'home',
@@ -85,7 +88,7 @@ export default defineComponent({
                     },
                 ],
             },
-            { id: 'ui_studio', icon: 'o_palette', label: 'UI Studio', url: '/' },
+            { id: 'ui_studio', icon: 'o_palette', label: 'UI Studio', url: '/studio' },
         ];
 
         watch(modelValue, (v) => {
@@ -96,7 +99,11 @@ export default defineComponent({
             emit('update:modelValue', v);
         });
 
-        return { drawerOpen, menu };
+        function isActive(url = ''): boolean {
+            return url === route.path;
+        }
+
+        return { drawerOpen, menu, isActive };
     },
 });
 </script>
