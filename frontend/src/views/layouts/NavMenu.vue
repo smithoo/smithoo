@@ -20,6 +20,7 @@
                                 v-ripple
                                 dense
                                 class="menu-item q-pt-sm q-pb-sm"
+                                @click.stop="goTo(child.url)"
                             >
                                 <q-icon :name="child.icon" size="18px" class="q-pl-lg" />
                                 <span class="q-ml-sm">{{ child.label }}</span>
@@ -33,6 +34,7 @@
                         v-ripple
                         dense
                         class="menu-item q-pt-sm q-pb-sm q-pl-lg"
+                        @click.stop="goTo(m.url)"
                     >
                         <q-icon :name="m.icon" size="18px" />
                         <span class="q-ml-sm">{{ m.label }}</span>
@@ -47,7 +49,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, toRefs, watch } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 
 interface MenuItem {
     id: string;
@@ -67,6 +69,7 @@ export default defineComponent({
     setup(props, { emit }) {
         const { modelValue } = toRefs(props);
 
+        const router = useRouter();
         const route = useRoute();
 
         const drawerOpen = ref(false);
@@ -103,7 +106,14 @@ export default defineComponent({
             return url === route.path;
         }
 
-        return { drawerOpen, menu, isActive };
+        function goTo(url = '') {
+            if (!url) {
+                return;
+            }
+            router.push(url);
+        }
+
+        return { drawerOpen, menu, isActive, goTo };
     },
 });
 </script>
