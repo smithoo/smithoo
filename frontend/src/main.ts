@@ -1,4 +1,5 @@
 import { createApp } from 'vue';
+
 import App from './App.vue';
 
 import router from './router';
@@ -14,6 +15,9 @@ import quasarIconSet from 'quasar/icon-set/material-icons-outlined';
 import 'quasar/src/css/index.sass';
 // Quasar icon libraries
 import '@quasar/extras/material-icons-outlined/material-icons-outlined.css';
+
+import './styles/common.scss';
+import './styles/animation.scss';
 
 const app = createApp(App);
 

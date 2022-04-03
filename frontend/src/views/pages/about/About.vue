@@ -4,7 +4,8 @@
             <q-avatar size="160px" class="q-mr-lg">
                 <img src="./../../../assets/smithoo.jpg" />
             </q-avatar>
-            <span class="text-h3">Hello, I'm Smithoo!</span>
+            <span class="text-h3 q-mr-md">Hello, I'm Smith!</span>
+            <span class="text-h4">안녕, 난 스미스야!</span>
         </div>
     </q-page>
 </template>
