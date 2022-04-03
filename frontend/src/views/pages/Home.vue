@@ -1,5 +1,7 @@
 <template>
-    <div class="home">hello</div>
+    <q-page class="q-pa-lg">
+        <span class="text-h3">Hello, world!</span>
+    </q-page>
 </template>
 
 <script lang="ts">

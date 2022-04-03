@@ -1,5 +1,5 @@
 <template>
-    <q-drawer show-if-above v-model="drawerOpen" :width="240" :breakpoint="500">
+    <q-drawer show-if-above v-model="drawerOpen" :width="240" :breakpoint="500" class="nav-menu">
         <q-scroll-area class="fit menu-list">
             <q-list>
                 <template v-for="m in menu" :key="m.id">
@@ -44,12 +44,14 @@
                 </template>
             </q-list>
         </q-scroll-area>
+        <ThemeButton class="theme-button" />
     </q-drawer>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref, toRefs, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import ThemeButton from './ThemeButton.vue';
 
 interface MenuItem {
     id: string;
@@ -68,12 +70,9 @@ export default defineComponent({
     },
     setup(props, { emit }) {
         const { modelValue } = toRefs(props);
-
         const router = useRouter();
         const route = useRoute();
-
         const drawerOpen = ref(false);
-
         const menu: MenuItem[] = [
             { id: 'home', icon: 'o_home', label: 'Home', url: '/' },
             { id: 'about_me', icon: 'o_face', label: 'About me', url: '/about' },
@@ -94,32 +93,37 @@ export default defineComponent({
             },
             { id: 'ui_studio', icon: 'o_palette', label: 'UI Studio', url: '/studio' },
         ];
-
         watch(modelValue, (v) => {
             drawerOpen.value = v;
         });
-
         watch(drawerOpen, (v) => {
             emit('update:modelValue', v);
         });
-
         function isActive(url = ''): boolean {
             return url === route.path;
         }
-
         function goTo(url = '') {
             if (!url) {
                 return;
             }
             router.push(url);
         }
-
         return { drawerOpen, menu, isActive, goTo };
     },
+    components: { ThemeButton },
 });
 </script>
 
 <style lang="scss">
+.nav-menu {
+    position: relative;
+    .theme-button {
+        position: absolute;
+        bottom: 12px;
+        left: 12px;
+    }
+}
+
 .menu-list {
     padding-top: 2px;
     border-right: 1px solid #ddd;

@@ -9,7 +9,7 @@ import graphql from './http/graphql';
 import firebase from './firebase';
 
 // Quasar
-import { Quasar } from 'quasar';
+import { Quasar, LocalStorage } from 'quasar';
 import quasarIconSet from 'quasar/icon-set/material-icons-outlined';
 // Quasar css
 import 'quasar/src/css/index.sass';
@@ -22,7 +22,7 @@ import './styles/animation.scss';
 const app = createApp(App);
 
 app.use(Quasar, {
-    plugins: {}, // import Quasar plugins and add here
+    plugins: { LocalStorage }, // import Quasar plugins and add here
     iconSet: quasarIconSet,
     /*
     config: {
