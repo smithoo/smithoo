@@ -76,6 +76,7 @@ export default defineComponent({
 
         const menu: MenuItem[] = [
             { id: 'home', icon: 'o_home', label: 'Home', url: '/' },
+            { id: 'about_me', icon: 'o_face', label: 'About me', url: '/about' },
             { id: 'todo', icon: 'o_checklist', label: 'Todo', url: '/todo' },
             {
                 id: 'article',
